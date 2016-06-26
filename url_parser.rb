@@ -1,5 +1,5 @@
 class UrlParser
-	# attr_accessor :scheme
+
 	def initialize(uri)
 		@url = uri
 	end
@@ -23,7 +23,11 @@ class UrlParser
 	end
 
 	def path
-		@url.split('//')[1].split(':')[1].split('/')[1].split('?')[0]
+		if @url.split('//')[1].split('/')[1][0] == "?"
+			nil
+		else
+			@url.split('//')[1].split(':')[1].split('/')[1].split('?')[0]
+		end
 	end
 
 	def query_string
@@ -44,7 +48,6 @@ class UrlParser
 
 
 
-	# expected: {"q" =>"cat", "name"=>"Tim"}
 
 
 
