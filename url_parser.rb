@@ -36,12 +36,15 @@ class UrlParser
 		hash
 	end
 
+	def fragment_id
+		@url.split('#')[1]
+	end
 
 
 
 
 
-# expected: {"q" =>"cat", "name"=>"Tim"}
+	# expected: {"q" =>"cat", "name"=>"Tim"}
 
 
 
