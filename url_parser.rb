@@ -26,4 +26,30 @@ class UrlParser
 		@url.split('//')[1].split(':')[1].split('/')[1].split('?')[0]
 	end
 
+	def query_string
+		query = @url.split('//')[1].split(':')[1].split('/')[1].split('?')[1].split('#')[0]
+		hash = Hash.new
+		query.split('&').each do |element|
+			item = element.split("=")
+			hash[item[0]] = item[1]
+		end
+		hash
+	end
+
+
+
+
+
+
+# expected: {"q" =>"cat", "name"=>"Tim"}
+
+
+
+
+
+
+
+
+
+
 end
