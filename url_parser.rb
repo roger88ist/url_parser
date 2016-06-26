@@ -31,11 +31,16 @@ class UrlParser
 	end
 
 	def query_string
-		query = @url.split('//')[1].split(':')[1].split('/')[1].split('?')[1].split('#')[0]
 		hash = Hash.new
-		query.split('&').each do |element|
-			item = element.split("=")
-			hash[item[0]] = item[1]
+		if @url.include?('?q=')
+			query = @url.split('?')[1].split('#')[0]
+			key_value = query.split('&')
+			key_value.each do |element|
+				item = element.split('=')
+				hash[item[0]] = item[1]
+			end
+		else
+			return nil
 		end
 		hash
 	end
