@@ -22,4 +22,8 @@ class UrlParser
 		@url.split('//')[1].split(':')[1].split('/')[0]
 	end
 
+	def path
+		@url.split('//')[1].split(':')[1].split('/')[1].split('?')[0]
+	end
+
 end
