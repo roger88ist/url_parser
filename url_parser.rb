@@ -18,4 +18,8 @@ class UrlParser
 		@url.split('//')[1].split(':')[0]
 	end
 
+	def port
+		@url.split('//')[1].split(':')[1].split('/')[0]
+	end
+
 end
