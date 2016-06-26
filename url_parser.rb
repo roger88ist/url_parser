@@ -5,13 +5,7 @@ class UrlParser
 	end
 
 	def scheme
-		if @url.include?('https')
-			"https"
-		elsif @url.include?('http')
-			"http"
-		else
-			"not a valid url"
-		end	
+		@url.split(':')[0]
 	end
 
 	def domain
@@ -19,7 +13,13 @@ class UrlParser
 	end
 
 	def port
-		@url.split('//')[1].split(':')[1].split('/')[0]
+		if @url.split(':').length > 2
+			@url.split(':')[2].split('/')[0]
+		elsif @url.include?('https')
+			"443"
+		else
+			"80"
+		end
 	end
 
 	def path
@@ -48,19 +48,5 @@ class UrlParser
 	def fragment_id
 		@url.split('#')[1]
 	end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 end
